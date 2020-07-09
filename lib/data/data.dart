@@ -11,49 +11,49 @@ List<DateModel> getDates() {
 
   // 1
   dateModel.date = '10';
-  dateModel.date = 'Sun';
+  dateModel.weekDay = 'Sun';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 2
   dateModel.date = '11';
-  dateModel.date = 'Mon';
+  dateModel.weekDay = 'Mon';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 3
   dateModel.date = '12';
-  dateModel.date = 'Tue';
+  dateModel.weekDay = 'Tue';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 4
   dateModel.date = '13';
-  dateModel.date = 'Wed';
+  dateModel.weekDay = 'Wed';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 5
   dateModel.date = '14';
-  dateModel.date = 'Thu';
+  dateModel.weekDay = 'Thu';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 6
   dateModel.date = '15';
-  dateModel.date = 'Fri';
+  dateModel.weekDay = 'Fri';
   dates.add(dateModel);
 
   dateModel = new DateModel();
 
   // 7
   dateModel.date = '16';
-  dateModel.date = 'Sat';
+  dateModel.weekDay = 'Sat';
   dates.add(dateModel);
 
   dateModel = new DateModel();
