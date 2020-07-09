@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:Event_App/models/date_model.dart';
+import 'package:Event_App/models/event_type_model.dart';
+import 'package:Event_App/models/events_model.dart';
 
 // create event dates
 List<DateModel> getDates() {
@@ -57,4 +59,68 @@ List<DateModel> getDates() {
   dateModel = new DateModel();
 
   return dates;
+}
+
+// Event types
+List<EventTypeModel> getEventTypes() {
+  List<EventTypeModel> events = new List();
+  EventTypeModel eventModel = new EventTypeModel();
+
+  //1
+  eventModel.imgAssetPath = "assets/concert.png";
+  eventModel.eventType = "Concert";
+  events.add(eventModel);
+
+  eventModel = new EventTypeModel();
+
+  //2
+  eventModel.imgAssetPath = "assets/sports.png";
+  eventModel.eventType = "Sports";
+  events.add(eventModel);
+
+  eventModel = new EventTypeModel();
+
+  //3
+  eventModel.imgAssetPath = "assets/education.png";
+  eventModel.eventType = "Education";
+  events.add(eventModel);
+
+  eventModel = new EventTypeModel();
+
+  return events;
+}
+
+// Events
+List<EventsModel> getEvents() {
+  List<EventsModel> events = new List<EventsModel>();
+  EventsModel eventsModel = new EventsModel();
+
+  //1
+  eventsModel.imgAssetPath = "assets/tileimg.png";
+  eventsModel.date = "May 12, 2020";
+  eventsModel.desc = "Sports Meet in Galaxy Field";
+  eventsModel.address = "Visa Oshwal, Westlands";
+  events.add(eventsModel);
+
+  eventsModel = new EventsModel();
+
+  //2
+  eventsModel.imgAssetPath = "assets/music_event.png";
+  eventsModel.date = "May 12, 2020";
+  eventsModel.desc = "Art & Meet in Street Plaza";
+  eventsModel.address = "Alchemist Bar, Westlands";
+  events.add(eventsModel);
+
+  eventsModel = new EventsModel();
+
+  //3
+  eventsModel.imgAssetPath = "assets/second.png";
+  eventsModel.date = "May 12, 2020";
+  eventsModel.address = "Pop up market";
+  eventsModel.desc = "Valley Arcade, Kilimani";
+  events.add(eventsModel);
+
+  eventsModel = new EventsModel();
+
+  return events;
 }
