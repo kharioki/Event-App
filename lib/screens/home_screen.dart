@@ -84,11 +84,62 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      DateTile(date: '10', weekDay: 'Sun'),
+                      DateTile(date: '11', weekDay: 'Mon'),
+                      DateTile(
+                        date: '12',
+                        weekDay: 'Tue',
+                        isSelected: true,
+                      ),
+                      DateTile(date: '13', weekDay: 'Wed'),
+                      DateTile(date: '14', weekDay: 'Thu'),
+                      DateTile(date: '15', weekDay: 'Fri'),
+                      DateTile(date: '16', weekDay: 'Sat'),
+                    ],
+                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DateTile extends StatelessWidget {
+  final String weekDay;
+  final String date;
+  final bool isSelected;
+
+  const DateTile({Key key, this.weekDay, this.date, this.isSelected = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      color: isSelected ? Color(0xFFFCCD00) : Colors.transparent,
+      child: Column(
+        children: [
+          Text(
+            date,
+            style: TextStyle(
+              color: isSelected ? Colors.black54 : Colors.white,
+            ),
+          ),
+          SizedBox(height: 13),
+          Text(
+            weekDay,
+            style: TextStyle(
+              color: isSelected ? Colors.black54 : Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
