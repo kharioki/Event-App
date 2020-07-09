@@ -1,6 +1,7 @@
 import 'package:Event_App/data/data.dart';
 import 'package:Event_App/models/date_model.dart';
 import 'package:Event_App/models/event_type_model.dart';
+import 'package:Event_App/models/events_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<DateModel> dates = new List<DateModel>();
   List<EventTypeModel> eventTypes = new List<EventTypeModel>();
+  List<EventsModel> events = new List<EventsModel>();
 
   String todaysDate = "12";
 
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     dates = getDates();
     eventTypes = getEventTypes();
+    events = getEvents();
   }
 
   @override
@@ -128,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Container(
                     height: 100,
                     child: ListView.builder(
@@ -139,6 +142,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         return EventTile(
                           imgAssetPath: eventTypes[index].imgAssetPath,
                           eventType: eventTypes[index].eventType,
+                        );
+                      },
+                    ),
+                  ),
+
+                  SizedBox(height: 10),
+
+                  /// Popular events
+                  Text(
+                    'Popular Events',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+
+                  Container(
+                    // height: 100,
+                    child: ListView.builder(
+                      itemCount: events.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return PopularEventTile(
+                          desc: events[index].desc,
+                          date: events[index].date,
+                          address: events[index].address,
+                          imgAssetPath: events[index].imgAssetPath,
                         );
                       },
                     ),
@@ -221,6 +251,96 @@ class EventTile extends StatelessWidget {
             eventType,
             style: TextStyle(
               color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PopularEventTile extends StatelessWidget {
+  String desc;
+  String date;
+  String address;
+  String imgAssetPath;
+
+  PopularEventTile({this.desc, this.date, this.address, this.imgAssetPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      margin: EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: Color(0xFF29404E),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(left: 16, top: 16),
+              width: MediaQuery.of(context).size.width - 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    desc,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/calendar.png',
+                        height: 12,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        date,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/location.png',
+                        height: 12,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        address,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(8),
+              bottomRight: Radius.circular(8),
+            ),
+            child: Image.asset(
+              imgAssetPath,
+              height: 100,
+              width: 120,
+              fit: BoxFit.cover,
             ),
           ),
         ],
